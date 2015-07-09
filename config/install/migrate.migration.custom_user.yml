@@ -1,0 +1,38 @@
+id: custom_user
+label: Custom user migration from Drupal 7
+dependencies:
+  enforced:
+    module:
+      - migrate_custom
+source:
+  plugin: custom_user
+destination:
+  plugin: entity:user
+process:
+  uid: uid
+  name: name
+  pass: pass
+  mail: mail
+  status: status
+  created: created
+  changed: changed
+  access: access
+  login: login
+  timezone: timezone
+  langcode: language
+  preferred_langcode: language
+  preferred_admin_langcode: language
+  init: init
+  data: data
+  field_first_name: first_name
+  field_last_name: last_name
+  'field_biography/value': biography_value
+  'field_biography/format':
+    plugin: static_map
+    bypass: true
+    source: biography_format
+    map:
+      1: plain_text
+      2: basic_html
+      3: full_html
+      4: full_html
